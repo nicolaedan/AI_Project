@@ -7,24 +7,76 @@ using System.Threading.Tasks;
 
 namespace Proiect_AI
 {
-    public class Piece
+
+    public abstract class Piece
     {
+        public class Movement
+        {
+            public int x, y;
+            public Movement(int x, int y)
+            { }
+            public void Set_X(int x)
+            { 
+                this.x = x;
+            }
+
+            public void Set_Y(int y)
+            {
+                this.y = y;
+            }
+
+            public int Get_X()
+            {
+                return this.x;
+            }
+
+            public int Get_Y()
+            {
+                return this.y;
+            }
+        }
+        public Movement[] valid_movement;
         public int row;
         public int column;
 
         public Bitmap bitmap;
-
         public Piece(int row,int column)
         {
             this.row = row;
             this.column = column;
+            valid_movement = new Movement[10];
+            for (int index = 0; index < 10; index++)
+                valid_movement[index] = new Movement(0, 0);
+
+
             //this.bitmap = new Bitmap();
         }
 
         public void Change_position(int x, int y)
         {
-            this.row = x;
-            this.column = y;
+            this.row = y;
+            this.column = x;
         }
-    }
+        public int Get_Row()
+        {
+            return this.row;
+        }
+
+        public int Get_Column()
+        {
+            return this.column;
+        }
+
+        public int get_movement_x(int index)
+        {
+            return valid_movement[index].Get_X();
+        }
+
+        public int get_movement_y(int index)
+        {
+            return valid_movement[index].Get_Y();
+        }
+        public abstract int validare_mutare(int[,] matrix);
+    };
+
 }
