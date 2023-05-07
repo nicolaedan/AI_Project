@@ -41,11 +41,11 @@ namespace Proiect_AI
 
         public Bitmap bitmap;
         Image image;
-        public Piece(int row,int column,string image)
+        public Piece(int row,int column,Image image)
         {
             this.row = row;
             this.column = column;
-            this.image = Image.FromFile(image);
+            this.image = image;
             valid_movement = new Movement[10];
             for (int index = 0; index < 10; index++)
                 valid_movement[index] = new Movement(0, 0);

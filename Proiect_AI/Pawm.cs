@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Numerics;
 using System.Text;
@@ -9,7 +10,7 @@ namespace Proiect_AI
 {
     public class Pawm:Piece
     {
-        public Pawm(int x, int y):base(x,y, System.IO.Directory.GetCurrentDirectory() + "\\Pieces_Images\\white_pawm.jpg")
+        public Pawm(int x, int y):base(x,y, Resource1.white_pawm)
         {
         }
 
