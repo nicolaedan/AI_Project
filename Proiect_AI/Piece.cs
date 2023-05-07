@@ -40,10 +40,12 @@ namespace Proiect_AI
         public int column;
 
         public Bitmap bitmap;
-        public Piece(int row,int column)
+        Image image;
+        public Piece(int row,int column,string image)
         {
             this.row = row;
             this.column = column;
+            this.image = Image.FromFile(image);
             valid_movement = new Movement[10];
             for (int index = 0; index < 10; index++)
                 valid_movement[index] = new Movement(0, 0);
@@ -77,6 +79,11 @@ namespace Proiect_AI
             return valid_movement[index].Get_Y();
         }
         public abstract int validare_mutare(int[,] matrix);
+
+        public Image get_piece_image()
+        {
+            return this.image;
+        }
     };
 
 }

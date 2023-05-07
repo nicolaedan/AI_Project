@@ -9,7 +9,7 @@ namespace Proiect_AI
 {
     public class Pawm:Piece
     {
-        public Pawm(int x, int y):base(x,y)
+        public Pawm(int x, int y):base(x,y, System.IO.Directory.GetCurrentDirectory() + "\\Pieces_Images\\white_pawm.jpg")
         {
         }
 

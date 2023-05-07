@@ -75,7 +75,7 @@ namespace Proiect_AI
             /* Give it alternating color */
             if ((i + j) % 2 == 0)
             {
-                Board_Matrix[i, j].BackColor = Color.White;
+                Board_Matrix[i, j].BackColor = Color.Black;
             }
             else
             {
@@ -85,7 +85,7 @@ namespace Proiect_AI
             /* Test if we have a chess piece on it */
             if (board.get_element(i, j) != 0)
             {
-                Board_Matrix[i, j].Text = board.piece_matrix[i,j].Get_Column().ToString();
+                Board_Matrix[i, j].Image = board.piece_matrix[i, j].get_piece_image();
             }
 
             /* Call t print button */
@@ -117,6 +117,8 @@ namespace Proiect_AI
                 /* Make border green for highlight */
                 Board_Matrix[cell_x, cell_y].FlatStyle = FlatStyle.Flat;
                 Board_Matrix[cell_x, cell_y].FlatAppearance.BorderColor = Color.Green;
+                
+                
                 display_generated_button(cell_x, cell_y);
             }
 
