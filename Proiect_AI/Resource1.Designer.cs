@@ -63,26 +63,6 @@ namespace Proiect_AI {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap black_knight {
-            get {
-                object obj = ResourceManager.GetObject("black_knight", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap black_pawm {
-            get {
-                object obj = ResourceManager.GetObject("black_pawm", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap white_knight {
             get {
                 object obj = ResourceManager.GetObject("white_knight", resourceCulture);
