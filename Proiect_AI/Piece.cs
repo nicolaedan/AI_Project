@@ -46,14 +46,14 @@ namespace Proiect_AI
             this.row = row;
             this.column = column;
             this.image = image;
-            valid_movement = new Movement[10];
-            for (int index = 0; index < 10; index++)
+            valid_movement = new Movement[50];
+            for (int index = 0; index < 50; index++)
                 valid_movement[index] = new Movement(0, 0);
 
 
             //this.bitmap = new Bitmap();
         }
-
+        
         public void Change_position(int x, int y)
         {
             this.row = y;

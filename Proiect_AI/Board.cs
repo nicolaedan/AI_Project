@@ -27,9 +27,12 @@ namespace Proiect_AI
                 }
             Board_Matrix[1, 4] = 1;
             Board_Matrix[2, 5] = 2;
-            piece_matrix[1, 4] = new Pawm(1, 4);
-            piece_matrix[2, 5] = new Pawm(2, 5);
-
+            Board_Matrix[3, 2] = 3;
+            Board_Matrix[4, 6] = 4;
+            piece_matrix[3, 2] = new Queen(3, 2);
+            piece_matrix[1, 4] = new Tower(1, 4);
+            piece_matrix[2, 5] = new Advisor(2, 5);
+            piece_matrix[4, 6] = new MountedAdvisor(4, 6);
         }
 
         /* Function used to get value of matrix element*/
