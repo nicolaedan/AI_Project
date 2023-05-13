@@ -8,8 +8,15 @@ namespace Proiect_AI
 {
     public class Sword : Piece
     {
-        public Sword(int x, int y) : base(x, y, Resource1.white_pawm)
+        public Sword(int x, int y, bool color) : base(x, y,color )
         {
+            
+            if (this.color == false)
+            {
+                this.set_image(Resource1.Sword_Black);
+
+            }
+            else this.set_image(Resource1.Sword_White);
         }
         public override int validare_mutare(int[,] matrix)
         {
@@ -23,8 +30,8 @@ namespace Proiect_AI
             if (matrix[actual_row + 1, actual_column] == 0)
             {
                 /* Save valid movement in member of class Piece */
-                valid_movement[movment_nr].Set_X(actual_row + 1);
-                valid_movement[movment_nr++].Set_Y(actual_column);
+                valid_movement[movment_nr].Set_X(actual_row );
+                valid_movement[movment_nr++].Set_Y(actual_column+1);
             }
 
             if (matrix[actual_row + 1, actual_column + 1] != 0)
@@ -36,8 +43,8 @@ namespace Proiect_AI
             if (matrix[actual_row + 1, actual_column - 1] != 0)
             {
                 /* Save valid movement in member of class Piece */
-                valid_movement[movment_nr].Set_X(actual_row + 1);
-                valid_movement[movment_nr++].Set_Y(actual_column - 1);
+                valid_movement[movment_nr].Set_X(actual_row - 1);
+                valid_movement[movment_nr++].Set_Y(actual_column + 1);
             }
 
             /* Return number of movements */

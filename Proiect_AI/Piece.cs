@@ -38,14 +38,16 @@ namespace Proiect_AI
         public Movement[] valid_movement;
         public int row;
         public int column;
-
+        public int n;
         public Bitmap bitmap;
         Image image;
-        public Piece(int row,int column,Image image)
+       public bool color;
+        public Piece(int row,int column,bool color)
         {
             this.row = row;
             this.column = column;
-            this.image = image;
+            this.color = color;
+            this.n = 11;
             valid_movement = new Movement[50];
             for (int index = 0; index < 50; index++)
                 valid_movement[index] = new Movement(0, 0);
@@ -53,7 +55,14 @@ namespace Proiect_AI
 
             //this.bitmap = new Bitmap();
         }
-        
+        public void set_image( Image image)
+        {
+            this.image=image;
+        }
+        public void Change_n(int n)
+        {
+            this.n = n;
+        }
         public void Change_position(int x, int y)
         {
             this.row = y;

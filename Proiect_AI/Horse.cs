@@ -8,8 +8,14 @@ namespace Proiect_AI
 {
     public class Horse : Piece
     {
-        public Horse(int x, int y) : base(x, y, Resource1.white_pawm)
+        public Horse(int x, int y,bool color) : base(x, y,color)
         {
+            if (this.color == false)
+            {
+                this.set_image(Resource1.Horse_Black);
+
+            }
+            else this.set_image(Resource1.Horse_White);
         }
 
         public override int validare_mutare(int[,] matrix)

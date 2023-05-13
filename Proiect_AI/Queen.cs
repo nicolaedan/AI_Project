@@ -11,15 +11,21 @@ namespace Proiect_AI
         Piece tower;
         Piece bishop;
 
-        public Queen(int x, int y) : base(x, y, Resource1.white_pawm)
+        public Queen(int x, int y,bool color) : base(x, y, color)
         {
 
+            if (this.color == false)
+            {
+                this.set_image(Resource1.Queen_Black);
+
+            }
+            else this.set_image(Resource1.Queen_White);
         }
 
         public override int validare_mutare(int[,] matrix)
         {
-            tower = new Tower(this.row, this.column);
-            bishop = new Advisor(this.row, this.column);
+            tower = new Tower(this.row, this.column, this.color);
+            bishop = new Advisor(this.row, this.column, this.color);
             int movment_nr = 0;
             int j = 0;
             int copy = 0;
