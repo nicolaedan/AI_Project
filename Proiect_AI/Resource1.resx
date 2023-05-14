@@ -118,16 +118,124 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="black_knight" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Photos\black_knight.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Advisor_Black" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Advisor_Black.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="black_pawm" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Photos\black_pawm.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Advisor_Morph_Black" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Advisor_Morph_Black.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="white_knight" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Photos\white_knight.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Advisor_Morph_White" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Advisor_Morph_White.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="white_pawm" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Photos\white_pawm.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Advisor_White" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Advisor_White.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Horse_Black" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Horse_Black.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Horse_Morph_Black" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Horse_Morph_Black.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Horse_Morph_White" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Horse_Morph_White.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Horse_White" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Horse_White.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="King_Black" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\King_Black.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="King_White" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\King_White.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Medusa_Black" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Medusa_Black.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Medusa_Morph_Black" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Medusa_Morph_Black.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Medusa_Morph_White" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Medusa_Morph_White.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Medusa_White" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Medusa_White.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Morph_Black" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Morph_Black.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Morph_White" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Morph_White.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MountedAdvisor_Black" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\MountedAdvisor_Black.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MountedAdvisor_Morph_Black" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\MountedAdvisor_Morph_Black.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MountedAdvisor_Morph_White" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\MountedAdvisor_Morph_White.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MountedAdvisor_White" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\MountedAdvisor_White.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Pillar_Black" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Pillar_Black.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Pillar_Morph_Black" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Pillar_Morph_Black.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Pillar_Morph_White" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Pillar_Morph_White.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Pillar_White" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Pillar_White.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Queen_Black" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Queen_Black.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Queen_Morph_Black" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Queen_Morph_Black.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Queen_Morph_White" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Queen_Morph_White.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Queen_White" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Queen_White.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Serpent_Black" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Serpent_Black.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Serpent_Morph_Black" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Serpent_Morph_Black.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Serpent_Morph_White" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Serpent_Morph_White.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Serpent_White" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Serpent_White.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Sword_Black" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Sword_Black.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Sword_Morph_Black" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Sword_Morph_Black.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Sword_Morph_White" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Sword_Morph_White.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Sword_White" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Sword_White.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Tower_Black" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Tower_Black.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Tower_Morph_Black" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Tower_Morph_Black.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Tower_Morph_White" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Tower_Morph_White.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Tower_White" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Tower_White.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

@@ -57,13 +57,17 @@
     <Compile Include="Advisor.cs" />
     <Compile Include="Board.cs" />
     <Compile Include="Horse.cs" />
+    <Compile Include="King.cs" />
+    <Compile Include="Medusa.cs" />
+    <Compile Include="Morph.cs" />
     <Compile Include="MountedAdvisor.cs" />
-    <Compile Include="Pawm.cs" />
     <Compile Include="Piece.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Pillar.cs" />
     <Compile Include="Queen.cs" />
+    <Compile Include="Serpent.cs" />
     <Compile Include="Tower.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -114,6 +118,126 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="bin\Debug\Pieces_Images\white_pawm.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Pillar_Black.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Pillar_Morph_Black.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Pillar_Morph_White.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Pillar_White.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Queen_Black.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Queen_Morph_Black.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Queen_Morph_White.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Queen_White.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Serpent_Black.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Serpent_Morph_Black.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Serpent_Morph_White.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Serpent_White.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Sword_Black.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Sword_Morph_Black.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Sword_Morph_White.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Sword_White.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Tower_Black.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Tower_Morph_Black.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Tower_Morph_White.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Tower_White.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Advisor_Black.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Advisor_Morph_Black.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Advisor_Morph_White.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Advisor_White.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Horse_Black.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Horse_Morph_Black.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Horse_Morph_White.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Horse_White.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\King_Black.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\King_White.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Medusa_Black.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Medusa_Morph_Black.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Medusa_Morph_White.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Medusa_White.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Morph_Black.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Morph_White.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MountedAdvisor_Black.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MountedAdvisor_Morph_Black.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MountedAdvisor_Morph_White.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MountedAdvisor_White.bmp" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

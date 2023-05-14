@@ -6,31 +6,32 @@ using System.Threading.Tasks;
 
 namespace Proiect_AI
 {
-    public class MountedAdvisor : Piece
+    public class Medusa:Piece
     {
-        Piece knight;
+        Piece tower;
         Piece bishop;
 
-        public MountedAdvisor(int x, int y,bool color) : base(x, y, color)
+        public Medusa(int x, int y,bool color) : base(x, y, color)
         {
 
             if (this.color == false)
             {
-                this.set_image(Resource1.MountedAdvisor_Black);
+                this.set_image(Resource1.Medusa_Black);
 
             }
-            else this.set_image(Resource1.MountedAdvisor_White);
+            else this.set_image(Resource1.Medusa_White);
         }
 
         public override int validare_mutare(int[,] matrix)
         {
-            knight = new Horse(this.row, this.column, this.color);
+            tower = new Tower(this.row, this.column, this.color);
             bishop = new Advisor(this.row, this.column, this.color);
             int movment_nr = 0;
             int j = 0;
             int copy = 0;
-
-            j = knight.validare_mutare(matrix);
+            bishop.Change_n(3);
+            tower.Change_n(3);
+            j = tower.validare_mutare(matrix);
             copy = j;
             movment_nr = j + bishop.validare_mutare(matrix);
 
@@ -38,10 +39,10 @@ namespace Proiect_AI
             for (int index = 0; index < j; index++)
             {
                 /* Get the cell that need highlight */
-                valid_movement[index].Set_X(knight.get_movement_x(index));
-                valid_movement[index].Set_Y(knight.get_movement_y(index));
+                valid_movement[index].Set_X(tower.get_movement_x(index));
+                valid_movement[index].Set_Y(tower.get_movement_y(index));
 
-                
+
             }
             for (int i = 0; i < movment_nr - copy; i++)
             {
@@ -50,11 +51,7 @@ namespace Proiect_AI
                 j++;
             }
 
-
-            /* Return number of movements */
             return movment_nr;
         }
-
-
     }
 }
