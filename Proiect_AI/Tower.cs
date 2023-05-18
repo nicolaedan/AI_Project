@@ -31,10 +31,15 @@ namespace Proiect_AI
 
             while (actual_row < 10 && nr_elements != 0)
             {
+                
                 nr_elements--;
                  actual_row++;
                 valid_movement[movment_nr].Set_X(actual_row);
                 valid_movement[movment_nr++].Set_Y(actual_column);
+                if (matrix[actual_row, actual_column] != 0)
+                {
+                    break;
+                }
                 /*moves.Add(new Coordinate(vertical, horizontal));*/
             }
             actual_row = this.Get_Row();
@@ -46,6 +51,10 @@ namespace Proiect_AI
                  actual_row--;
                 valid_movement[movment_nr].Set_X(actual_row);
                 valid_movement[movment_nr++].Set_Y(actual_column);
+                if (matrix[actual_row, actual_column] != 0)
+                {
+                    break;
+                }
                 /*moves.Add(new Coordinate(vertical, horizontal));*/
             }
             actual_row = this.Get_Row();
@@ -57,6 +66,10 @@ namespace Proiect_AI
                 actual_column--; 
                 valid_movement[movment_nr].Set_X(actual_row);
                 valid_movement[movment_nr++].Set_Y(actual_column);
+                if (matrix[actual_row, actual_column] != 0)
+                {
+                    break;
+                }
                 /*moves.Add(new Coordinate(vertical, horizontal));*/
             }
             actual_row = this.Get_Row();
@@ -68,6 +81,10 @@ namespace Proiect_AI
                 actual_column++; 
                 valid_movement[movment_nr].Set_X(actual_row);
                 valid_movement[movment_nr++].Set_Y(actual_column);
+                if (matrix[actual_row, actual_column] != 0)
+                {
+                    break;
+                }
                 /*moves.Add(new Coordinate(vertical, horizontal));*/
             }
 
