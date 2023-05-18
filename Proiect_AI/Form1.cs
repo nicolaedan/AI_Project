@@ -113,13 +113,29 @@ namespace Proiect_AI
                 /* Get the cell that need highlight */
                 cell_x = board.piece_matrix[x, y].get_movement_x(index);
                 cell_y = board.piece_matrix[x, y].get_movement_y(index);
-
-                /* Make border green for highlight */
+                 if(board.get_element(cell_x,cell_y)!=0)
+                    {
+                        if (board.piece_matrix[cell_x, cell_y].get_color() != board.piece_matrix[x,y].get_color())
+                            {
+                             /* Make border green for highlight */
                 Board_Matrix[cell_x, cell_y].FlatStyle = FlatStyle.Flat;
                 Board_Matrix[cell_x, cell_y].FlatAppearance.BorderColor = Color.Green;
+                        display_generated_button(cell_x, cell_y);
+                        }
+
+
+                            
+                      }
+                 else
+                {
+                    Board_Matrix[cell_x, cell_y].FlatStyle = FlatStyle.Flat;
+                Board_Matrix[cell_x, cell_y].FlatAppearance.BorderColor = Color.Green;
+                        display_generated_button(cell_x, cell_y);
+                }
                 
                 
-                display_generated_button(cell_x, cell_y);
+                
+                
             }
 
             /* Save the coordonates of piece that needs to be moved */
@@ -143,9 +159,12 @@ namespace Proiect_AI
                     cell_x = board.piece_matrix[last_x, last_y].get_movement_x(index);
                     cell_y = board.piece_matrix[last_x, last_y].get_movement_y(index);
 
-                    /* Reset highlight */
-                    delete_button_onClick(cell_x, cell_y);
-                }
+                   
+                   
+                   delete_button_onClick(cell_x, cell_y);
+                    }
+                
+                
             }
         }
         public void create_eventonclick(int x,int y)
