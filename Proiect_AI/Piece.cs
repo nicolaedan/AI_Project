@@ -55,6 +55,11 @@ namespace Proiect_AI
 
             //this.bitmap = new Bitmap();
         }
+        public bool get_color()
+        {
+            return this.color; 
+        }
+
         public void set_image( Image image)
         {
             this.image=image;
