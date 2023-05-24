@@ -27,24 +27,68 @@ namespace Proiect_AI
             int actual_row = this.Get_Row();
             int actual_column = this.Get_Column();
 
-            if (matrix[actual_row, actual_column+1] == 0)
+            if (this.color == false)
             {
-                /* Save valid movement in member of class Piece */
-                valid_movement[movment_nr].Set_X(actual_row);
-                valid_movement[movment_nr++].Set_Y(actual_column+1);
-            }
+                if (actual_column + 1 < 11)
+                {
+                    if (matrix[actual_row, actual_column + 1] == 0)
+                    {
+                        /* Save valid movement in member of class Piece */
+                        valid_movement[movment_nr].Set_X(actual_row);
+                        valid_movement[movment_nr++].Set_Y(actual_column + 1);
+                    }
+                }
 
-            if (matrix[actual_row + 1, actual_column + 1] != 0)
-            {
-                /* Save valid movement in member of class Piece */
-                valid_movement[movment_nr].Set_X(actual_row + 1);
-                valid_movement[movment_nr++].Set_Y(actual_column + 1);
+                if (actual_row + 1 < 11 && actual_column + 1 < 11)
+                {
+                    if (matrix[actual_row + 1, actual_column + 1] != 0)
+                    {
+                        /* Save valid movement in member of class Piece */
+                        valid_movement[movment_nr].Set_X(actual_row + 1);
+                        valid_movement[movment_nr++].Set_Y(actual_column + 1);
+                    }
+                }
+
+                if (actual_row + 1 < 11 && actual_column - 1 >= 0)
+                {
+                    if (matrix[actual_row + 1, actual_column - 1] != 0)
+                    {
+                        /* Save valid movement in member of class Piece */
+                        valid_movement[movment_nr].Set_X(actual_row + 1);
+                        valid_movement[movment_nr++].Set_Y(actual_column - 1);
+                    }
+                }
             }
-            if (matrix[actual_row + 1, actual_column - 1] != 0)
-            {
-                /* Save valid movement in member of class Piece */
-                valid_movement[movment_nr].Set_X(actual_row + 1);
-                valid_movement[movment_nr++].Set_Y(actual_column - 1);
+            else {
+                if (actual_column - 1 >=0)
+                {
+                    if (matrix[actual_row, actual_column - 1] == 0)
+                    {
+                        /* Save valid movement in member of class Piece */
+                        valid_movement[movment_nr].Set_X(actual_row);
+                        valid_movement[movment_nr++].Set_Y(actual_column - 1);
+                    }
+                }
+
+                if (actual_row - 1 >=0 && actual_column - 1 >= 0)
+                {
+                    if (matrix[actual_row - 1, actual_column - 1] != 0)
+                    {
+                        /* Save valid movement in member of class Piece */
+                        valid_movement[movment_nr].Set_X(actual_row - 1);
+                        valid_movement[movment_nr++].Set_Y(actual_column - 1);
+                    }
+                }
+
+                if (actual_row - 1 >= 0 && actual_column + 1 < 11)
+                {
+                    if (matrix[actual_row - 1, actual_column + 1] != 0)
+                    {
+                        /* Save valid movement in member of class Piece */
+                        valid_movement[movment_nr].Set_X(actual_row - 1);
+                        valid_movement[movment_nr++].Set_Y(actual_column + 1);
+                    }
+                }
             }
 
             /* Return number of movements */

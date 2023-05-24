@@ -13,6 +13,7 @@ namespace Proiect_AI
         public class Movement
         {
             public int x, y;
+            
             public Movement(int x, int y)
             { }
             public void Set_X(int x)
@@ -41,13 +42,17 @@ namespace Proiect_AI
         public int n;
         public Bitmap bitmap;
         Image image;
-       public bool color;
+        public bool color;
+        public int score;
+        public int nr_moves;
         public Piece(int row,int column,bool color)
         {
             this.row = row;
             this.column = column;
             this.color = color;
             this.n = 11;
+            this.nr_moves=0;
+            this.score=0;
             valid_movement = new Movement[50];
             for (int index = 0; index < 50; index++)
                 valid_movement[index] = new Movement(0, 0);
@@ -58,6 +63,10 @@ namespace Proiect_AI
         public bool get_color()
         {
             return this.color; 
+        }
+        public int get_score()
+        {
+            return this.score;
         }
 
         public void set_image( Image image)
@@ -83,8 +92,14 @@ namespace Proiect_AI
             return this.column;
         }
 
+        public int get_moves_nr()
+        { 
+            return this.nr_moves;
+        }
+
         public int get_movement_x(int index)
         {
+            this.nr_moves=index;
             return valid_movement[index].Get_X();
         }
 

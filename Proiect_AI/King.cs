@@ -8,6 +8,7 @@ namespace Proiect_AI
 {
     public class King:Piece
     {
+        Queen queen;
         public King(int x, int y,bool color) : base(x, y, color)
         {
             if (this.color == false)
@@ -21,76 +22,20 @@ namespace Proiect_AI
         {
             /* Variable used to return number of possible movements */
             int movment_nr = 0;
-
-            /* Get actual row for pawm movement */
-            int actual_row = this.Get_Row();
-            int actual_column = this.Get_Column();
-
-            int suma = actual_column + actual_row;
+            queen=new Queen(this.row,this.column,this.color);
+            queen.Change_n(1);
+             movment_nr = queen.validare_mutare(matrix);
 
 
-            if (matrix[actual_row + 1, actual_column] == 0)
+            for (int index = 0; index < movment_nr; index++)
             {
-                
-                valid_movement[movment_nr].Set_X(actual_row + 1);
-                valid_movement[movment_nr++].Set_Y(actual_column);
-            }
+                /* Get the cell that need highlight */
+                valid_movement[index].Set_X(queen.get_movement_x(index));
+                valid_movement[index].Set_Y(queen.get_movement_y(index));
 
-            if (matrix[actual_row - 1, actual_column] == 0)
-            {
-                
-                valid_movement[movment_nr].Set_X(actual_row - 1);
-                valid_movement[movment_nr++].Set_Y(actual_column);
-            }
-            if (matrix[actual_row, actual_column + 1] == 0)
-            {
-                
-                valid_movement[movment_nr].Set_X(actual_row);
-                valid_movement[movment_nr++].Set_Y(actual_column + 1);
-            }
 
-            if (matrix[actual_row, actual_column - 1] == 0)
-            {
-                
-                valid_movement[movment_nr].Set_X(actual_row);
-                valid_movement[movment_nr++].Set_Y(actual_column - 1);
             }
-
-            if (actual_row < 10 && actual_column < 10)
-            {
-                actual_column++; actual_row++;
-                valid_movement[movment_nr].Set_X(actual_row);
-                valid_movement[movment_nr++].Set_Y(actual_column);
-                
-            }
-
-            actual_row = this.Get_Row();
-            actual_column = this.Get_Column();
-            if (actual_row > 0 && actual_column < 10)
-            {
-                actual_column++; actual_row--;
-                valid_movement[movment_nr].Set_X(actual_row);
-                valid_movement[movment_nr++].Set_Y(actual_column);
-               
-            }
-            actual_row = this.Get_Row();
-            actual_column = this.Get_Column();
-            if (actual_row < 10 && actual_column > 0)
-            {
-                actual_column--; actual_row++;
-                valid_movement[movment_nr].Set_X(actual_row);
-                valid_movement[movment_nr++].Set_Y(actual_column);
-                
-            }
-            actual_row = this.Get_Row();
-            actual_column = this.Get_Column();
-            if (actual_row > 0 && actual_column > 0)
-            {
-                actual_column--; actual_row--;
-                valid_movement[movment_nr].Set_X(actual_row);
-                valid_movement[movment_nr++].Set_Y(actual_column);
-                
-            }
+        
 
             /* Return number of movements */
             return movment_nr;
