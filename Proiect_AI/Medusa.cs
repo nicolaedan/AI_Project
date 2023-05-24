@@ -31,10 +31,11 @@ namespace Proiect_AI
             int copy = 0;
             bishop.Change_n(3);
             tower.Change_n(3);
+            
             j = tower.validare_mutare(matrix);
             copy = j;
             movment_nr = j + bishop.validare_mutare(matrix);
-
+            this.nr_moves = movment_nr;
 
             for (int index = 0; index < j; index++)
             {

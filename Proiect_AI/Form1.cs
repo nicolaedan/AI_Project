@@ -34,12 +34,16 @@ namespace Proiect_AI
         Board board;
 
         int last_x = -1, last_y = -1;
+        private Label label1;
 
         public Form1()
         {
             /* Initialize the board object and the board */
             board = new Board();
             generate_board();
+            //board.start_minmax(2);
+          //  highlight_buttons(board.AI_move.row,board.AI_move.column);
+          
         }
 
         public void generate_board()
@@ -114,28 +118,21 @@ namespace Proiect_AI
                 cell_x = board.piece_matrix[x, y].get_movement_x(index);
                 cell_y = board.piece_matrix[x, y].get_movement_y(index);
                  if(board.get_element(cell_x,cell_y)!=0)
-                    {
+                 {
                         if (board.piece_matrix[cell_x, cell_y].get_color() != board.piece_matrix[x,y].get_color())
-                            {
+                        {
                              /* Make border green for highlight */
-                Board_Matrix[cell_x, cell_y].FlatStyle = FlatStyle.Flat;
-                Board_Matrix[cell_x, cell_y].FlatAppearance.BorderColor = Color.Green;
-                        display_generated_button(cell_x, cell_y);
-                        }
-
-
-                            
-                      }
+                             Board_Matrix[cell_x, cell_y].FlatStyle = FlatStyle.Flat;
+                             Board_Matrix[cell_x, cell_y].FlatAppearance.BorderColor = Color.Green;
+                             display_generated_button(cell_x, cell_y);
+                        }    
+                 }
                  else
-                {
+                 {
                     Board_Matrix[cell_x, cell_y].FlatStyle = FlatStyle.Flat;
-                Board_Matrix[cell_x, cell_y].FlatAppearance.BorderColor = Color.Green;
-                        display_generated_button(cell_x, cell_y);
-                }
-                
-                
-                
-                
+                    Board_Matrix[cell_x, cell_y].FlatAppearance.BorderColor = Color.Green;
+                    display_generated_button(cell_x, cell_y);
+                 }  
             }
 
             /* Save the coordonates of piece that needs to be moved */
@@ -159,12 +156,8 @@ namespace Proiect_AI
                     cell_x = board.piece_matrix[last_x, last_y].get_movement_x(index);
                     cell_y = board.piece_matrix[last_x, last_y].get_movement_y(index);
 
-                   
-                   
-                   delete_button_onClick(cell_x, cell_y);
-                    }
-                
-                
+                    delete_button_onClick(cell_x, cell_y);
+                }   
             }
         }
         public void create_eventonclick(int x,int y)
@@ -195,7 +188,6 @@ namespace Proiect_AI
                         /* Clear highlight after move */
                         clear_highlight(x, y);
 
-
                         /* Reset the cells for piece movement(source cell and destionation cell) */
                         board.update_element(last_x, last_y, x, y);
                         delete_button_onClick(x, y);
@@ -203,18 +195,42 @@ namespace Proiect_AI
                         last_x = -1;
                         last_y = -1;
                     }
-          
-
             };
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
 
         private void InitializeComponent()
         {
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
-          
-            this.ClientSize = new System.Drawing.Size(3000, 3000);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(1648, 70);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(46, 17);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "label1";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
+            // 
+            // Form1
+            // 
+            this.ClientSize = new System.Drawing.Size(1924, 1055);
+            this.Controls.Add(this.label1);
             this.Name = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
     }
