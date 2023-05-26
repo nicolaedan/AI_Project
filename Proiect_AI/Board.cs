@@ -170,7 +170,7 @@ namespace Proiect_AI
             /* Update new position of chess piece */
             Board_Matrix[new_x, new_y] = Board_Matrix[old_x, old_y];
             piece_matrix[new_x, new_y] = piece_matrix[old_x, old_y];
-
+            piece_matrix[new_x, new_y].color = piece_matrix[old_x, old_y].color;
             
             /* Set new coordonates */
             piece_matrix[new_x, new_y].Change_position(new_y, new_x);
