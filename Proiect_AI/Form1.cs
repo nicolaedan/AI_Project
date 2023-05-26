@@ -8,6 +8,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using NetworkCommsDotNet;
+using NetworkCommsDotNet.Connections;
+using Microsoft.VisualBasic;
 
 enum ChessPieces{
     Sword = 1,       //Pawm
@@ -29,6 +32,11 @@ namespace Proiect_AI
     {
         /* Matrix of buttons that will be the game board */
         public Button[,] Board_Matrix = new Button[11, 11];
+        public Button button_retea = new Button();
+        public Label labelConnected=new Label();
+        string numeClient;
+        string serverIp;
+        int serverPort;
 
         /* Board object used for tracking of game */
         Board board;
@@ -41,11 +49,94 @@ namespace Proiect_AI
             /* Initialize the board object and the board */
             board = new Board();
             generate_board();
+            button_retea.Location = new Point(700, 700);
+            labelConnected.Location = new Point(700, 0);
+            
+            labelConnected.Text = "Not Connected";
+            button_retea.Click += delegate (object sender, EventArgs args) {
+                string ip, stringPort;
+                int port;
+                string ipSiPort = Interaction.InputBox("Enter ip and port of the client", "Client box", "ex : 10.10.10.10:123");
+                this.numeClient = Interaction.InputBox("Enter a client name", "Client Name Box", "ex : Bob");
+                this.serverIp = ipSiPort.Split(':')[0];
+                stringPort = ipSiPort.Split(':')[1];
+                this.serverPort = Int32.Parse(stringPort);
+                NetworkComms.SendObject<string>("Message", this.serverIp, this.serverPort, "@" + this.numeClient);
+
+            };
+            this.Controls.Add(button_retea);
+            this.Controls.Add(labelConnected);
+            NetworkComms.AppendGlobalIncomingPacketHandler<string>("Message", ReceivedPacketsHandlers);
+
+
             //board.start_minmax(2);
-          //  highlight_buttons(board.AI_move.row,board.AI_move.column);
-          
+            //  highlight_buttons(board.AI_move.row,board.AI_move.column);
+
+        }
+        private void ReceivedPacketsHandlers(PacketHeader header, Connection connection, String message)
+        {
+            string mesajDecodat = message.Substring(1);
+            Console.WriteLine(message);
+            if (message[0] == '&')
+            {
+                writeConnectedLabelSafe(mesajDecodat);
+            }
+            else
+            {
+                receptieSiParsareDateEvent(mesajDecodat, '%');
+            }
+        }
+        public void receptieSiParsareDateEvent(string message, char caracterulDeEncodare)
+        {
+            
+            int XRetea = 0;
+            int YRetea = 0;
+            int X_oldRetea = 0;
+            int Y_oldRetea = 0;
+            string[] vectorVariabile;
+            string numeVariabila;
+            string valoareVariabila;
+            string numeVariabila_old;
+            string valoareVariabila_old;
+            string variabilaEncodata="";
+            vectorVariabile = message.Split(caracterulDeEncodare);
+            
+       
+            numeVariabila = vectorVariabile[0];
+            valoareVariabila = vectorVariabile[1];
+            numeVariabila_old = vectorVariabile[2];
+            valoareVariabila_old = vectorVariabile[3];
+            Console.WriteLine(vectorVariabile[1]);
+            board.update_element(Int32.Parse(numeVariabila_old), Int32.Parse(valoareVariabila_old), Int32.Parse(numeVariabila), Int32.Parse(valoareVariabila));
+            delete_button_onClick(Int32.Parse(numeVariabila_old), Int32.Parse(valoareVariabila_old));
+            delete_button_onClick(Int32.Parse(numeVariabila), Int32.Parse(valoareVariabila));
+
+        }
+        public void encodare(int X, int Y)
+        {
+            string coordonate = "";
+            string encodedString = "";
+            coordonate =  X.ToString() + "%"  + Y.ToString()+"%"+last_x.ToString() + "%" +  last_y.ToString();
+            encodedString =  "%" + coordonate;
+            if (labelConnected.Text == "connectionEstablished")
+            {
+                NetworkComms.SendObject<string>("Message", this.serverIp, this.serverPort, encodedString);
+                Console.WriteLine(encodedString);
+            }
         }
 
+        public void writeConnectedLabelSafe(string text)
+        {
+            if (labelConnected.InvokeRequired)
+            {
+                Action safeWrite = delegate { writeConnectedLabelSafe(text); };
+                labelConnected.Invoke(safeWrite);
+            }
+            else
+            {
+                labelConnected.Text = text;
+            }
+        }
         public void generate_board()
         {
             /* Create the board piece by piece */
@@ -97,6 +188,11 @@ namespace Proiect_AI
         }
         public void delete_button_onClick(int x, int y)
         {
+            if (this.InvokeRequired)
+            {
+                this.Invoke(new Action<int, int>(delete_button_onClick), new object[] { x, y });
+                return;
+            }
             /* Remove actual board piece */
             this.Controls.Remove(Board_Matrix[x, y]);
 
@@ -189,9 +285,10 @@ namespace Proiect_AI
                         clear_highlight(x, y);
 
                         /* Reset the cells for piece movement(source cell and destionation cell) */
-                        board.update_element(last_x, last_y, x, y);
-                        delete_button_onClick(x, y);
-                        delete_button_onClick(last_x, last_y);
+                       // board.update_element(last_x, last_y, x, y);
+                        encodare(x, y);
+                       // delete_button_onClick(x, y);
+                       // delete_button_onClick(last_x, last_y);
                         last_x = -1;
                         last_y = -1;
                     }
