@@ -12,19 +12,7 @@ using NetworkCommsDotNet;
 using NetworkCommsDotNet.Connections;
 using Microsoft.VisualBasic;
 
-enum ChessPieces{
-    Sword = 1,       //Pawm
-    Tower,           //Rook
-    Horse,           //Knight
-    Advisor,         //Bishop
-    Mounted_Advisor, //Bishop/Knight
-    Queen,           //Queen
-    King,            //King
-    Serpent,         //Bishop/Knight/Rook
-    Pillar,          //Knight/Rook
-    Medusa,          //kind of Queen
-    Morph,           //Starts as Advisor
-}
+
 
 namespace Proiect_AI
 {
@@ -34,9 +22,12 @@ namespace Proiect_AI
         public Button[,] Board_Matrix = new Button[11, 11];
         public Button button_retea = new Button();
         public Label labelConnected=new Label();
+        
         string numeClient;
         string serverIp;
         int serverPort;
+        int color_player;
+        int movement_enable;
 
         /* Board object used for tracking of game */
         Board board;
@@ -110,7 +101,7 @@ namespace Proiect_AI
             board.update_element(Int32.Parse(numeVariabila_old), Int32.Parse(valoareVariabila_old), Int32.Parse(numeVariabila), Int32.Parse(valoareVariabila));
             delete_button_onClick(Int32.Parse(numeVariabila_old), Int32.Parse(valoareVariabila_old));
             delete_button_onClick(Int32.Parse(numeVariabila), Int32.Parse(valoareVariabila));
-
+            movement_enable = (movement_enable + 1) % 2;
         }
         public void encodare(int X, int Y)
         {
@@ -134,7 +125,10 @@ namespace Proiect_AI
             }
             else
             {
-                labelConnected.Text = text;
+                movement_enable = (text[text.Length - 1])-'0';
+                color_player = text[text.Length - 3] - '0';
+                labelConnected.Text = text.Substring(0,text.Length-4);
+                Console.WriteLine(movement_enable + " " + color_player);
             }
         }
         public void generate_board()
@@ -261,11 +255,11 @@ namespace Proiect_AI
             /* Create the event that will happen when we click on a piece of the board */
             Board_Matrix[x, y].Click += delegate (object sender, EventArgs args) {
             int nr, cell;
-
-              
+                if (movement_enable == 0)
+                {
                     if (Board_Matrix[x, y].FlatAppearance.BorderColor != Color.Green)
                     {
-                        if (board.get_element(x, y) != 0)
+                        if (board.get_element(x, y) != 0 && board.piece_matrix[x,y].get_color()== Convert.ToBoolean(color_player))
                         {
                             /* Make sure we highlight the correct cells */
                             clear_highlight(x, y);
@@ -278,20 +272,21 @@ namespace Proiect_AI
                             /* Clear highlight buttons */
                             clear_highlight(x, y);
                         }
-                     }
+                    }
                     else
                     {
                         /* Clear highlight after move */
                         clear_highlight(x, y);
 
                         /* Reset the cells for piece movement(source cell and destionation cell) */
-                       // board.update_element(last_x, last_y, x, y);
+                        // board.update_element(last_x, last_y, x, y);
                         encodare(x, y);
-                       // delete_button_onClick(x, y);
-                       // delete_button_onClick(last_x, last_y);
+                        // delete_button_onClick(x, y);
+                        // delete_button_onClick(last_x, last_y);
                         last_x = -1;
                         last_y = -1;
                     }
+                }
             };
         }
 

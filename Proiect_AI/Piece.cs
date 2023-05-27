@@ -10,6 +10,7 @@ namespace Proiect_AI
 
     public abstract class Piece
     {
+
         public class Movement
         {
             public int x, y;
@@ -45,6 +46,7 @@ namespace Proiect_AI
         public bool color;
         public int score;
         public int nr_moves;
+        public int behavior;
         public Piece(int row,int column,bool color)
         {
             this.row = row;
@@ -53,6 +55,7 @@ namespace Proiect_AI
             this.n = 11;
             this.nr_moves=0;
             this.score=0;
+            this.behavior = 4;
             valid_movement = new Movement[50];
             for (int index = 0; index < 50; index++)
                 valid_movement[index] = new Movement(0, 0);
