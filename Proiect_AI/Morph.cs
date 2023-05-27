@@ -21,7 +21,37 @@ namespace Proiect_AI
 
         public override int validare_mutare(int[,] matrix)
         {
-            morph = new Advisor(this.row, this.column,this.color);
+            switch (behavior)
+            {
+                case 1:
+                    morph = new Sword(this.row, this.column, this.color);
+                    break;
+                case 2:
+                    morph = new Tower(this.row, this.column, this.color);
+                    break;
+                case 3:
+                    morph = new Horse(this.row, this.column, this.color);
+                    break;
+                case 4:
+                    morph = new Advisor(this.row, this.column, this.color);
+                    break;
+                case 5:
+                    morph = new MountedAdvisor(this.row, this.column, this.color);
+                    break;
+                case 6:
+                    morph = new Queen(this.row, this.column, this.color);
+                    break;
+                case 8:
+                    morph = new Serpent(this.row, this.column, this.color);
+                    break;
+                case 9:
+                    morph = new Pillar(this.row, this.column, this.color);
+                    break;
+                case 10:
+                    morph = new Medusa(this.row, this.column, this.color);
+                    break;
+             
+            }
             int movment_nr = 0;
             
 

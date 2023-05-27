@@ -8,6 +8,20 @@ using System.Windows.Controls;
 
 namespace Proiect_AI
 {
+    enum ChessPieces
+    {
+        Sword = 1,       //Pawm
+        Tower,           //Rook
+        Horse,           //Knight
+        Advisor,         //Bishop
+        Mounted_Advisor, //Bishop/Knight
+        Queen,           //Queen
+        King,            //King
+        Serpent,         //Bishop/Knight/Rook
+        Pillar,          //Knight/Rook
+        Medusa,          //kind of Queen
+        Morph,           //Starts as Advisor
+    }
     class Board
     {
         /* Matrix used for board tracking */
@@ -31,63 +45,63 @@ namespace Proiect_AI
                 }
            /* White pieces */
            /* ------------------------------ */
-            Board_Matrix[0, 10] = 1;
-            Board_Matrix[1, 10] = 2;
-            Board_Matrix[2, 10] = 3;
-            Board_Matrix[3, 10] = 4;
-            Board_Matrix[4, 10] = 5;
-            Board_Matrix[5, 10] = 6;
-            Board_Matrix[6, 10] = 7;
-            Board_Matrix[7, 10] = 8;
-            Board_Matrix[8, 10] = 9;
-            Board_Matrix[9, 10] = 10;
-            Board_Matrix[10, 10] = 11;
-            Board_Matrix[0, 9] = 12;
-            Board_Matrix[1, 9] = 13;
-            Board_Matrix[2, 9] = 14;
-            Board_Matrix[3, 9] = 15;
-            Board_Matrix[4, 9] = 16;
-            Board_Matrix[5, 9] = 17;
-            Board_Matrix[6, 9] = 18;
-            Board_Matrix[7, 9] = 19;
-            Board_Matrix[8, 9] = 20;
-            Board_Matrix[9, 9] = 21;
-            Board_Matrix[10, 9] = 22;
-            Board_Matrix[4,8] = 23;
-            Board_Matrix[5, 8] = 24;
-            Board_Matrix[6, 8] = 25;
-            Board_Matrix[5, 7] = 26;
+            Board_Matrix[0, 10] = 2;
+            Board_Matrix[1, 10] = 3;
+            Board_Matrix[2, 10] = 4;
+            Board_Matrix[3, 10] = 5;
+            Board_Matrix[4, 10] = 6;
+            Board_Matrix[5, 10] = 7;
+            Board_Matrix[6, 10] = 8;
+            Board_Matrix[7, 10] = 4;
+            Board_Matrix[8, 10] = 5;
+            Board_Matrix[9, 10] = 3;
+            Board_Matrix[10, 10] = 2;
+            Board_Matrix[0, 9] = 1;
+            Board_Matrix[1, 9] = 1;
+            Board_Matrix[2, 9] = 1;
+            Board_Matrix[3, 9] = 1;
+            Board_Matrix[4, 9] = 9;
+            Board_Matrix[5, 9] = 10;
+            Board_Matrix[6, 9] = 9;
+            Board_Matrix[7, 9] = 1;
+            Board_Matrix[8, 9] = 1;
+            Board_Matrix[9, 9] = 1;
+            Board_Matrix[10, 9] = 1;
+            Board_Matrix[4,8] = 1;
+            Board_Matrix[5, 8] = 11;
+            Board_Matrix[6, 8] = 1;
+            Board_Matrix[5, 7] = 1;
             /* ------------------------------ */
 
 
             /* Black pieces */
             /* ...........................*/
-            Board_Matrix[0, 0] = 27;
-            Board_Matrix[1, 0] = 28;
-            Board_Matrix[2, 0] = 29;
-            Board_Matrix[3, 0] = 30;
-            Board_Matrix[4, 0] = 31;
-            Board_Matrix[5, 0] = 32;
-            Board_Matrix[6, 0] = 33;
-            Board_Matrix[7, 0] = 34;
-            Board_Matrix[8, 0] = 34;
-            Board_Matrix[9, 0] = 36;
-            Board_Matrix[10, 0] = 37;
-            Board_Matrix[0, 1] = 38;
-            Board_Matrix[1, 1] = 39;
-            Board_Matrix[2, 1] = 40;
-            Board_Matrix[3, 1] = 41;
-            Board_Matrix[4, 1] = 42;
-            Board_Matrix[5, 1] = 43;
-            Board_Matrix[6, 1] = 44;
-            Board_Matrix[7, 1] = 45;
-            Board_Matrix[8, 1] = 46;
-            Board_Matrix[9, 1] = 47;
-            Board_Matrix[10, 1] = 48;
-            Board_Matrix[4, 2] = 49;
-            Board_Matrix[5, 2] = 50;
-            Board_Matrix[6, 2] = 51;
-            Board_Matrix[5, 3] = 52;
+            Board_Matrix[0, 0] = 2;
+            Board_Matrix[1, 0] = 3;
+            Board_Matrix[2, 0] = 4;
+            Board_Matrix[3, 0] = 5;
+            Board_Matrix[4, 0] = 6;
+            Board_Matrix[5, 0] = 7;
+            Board_Matrix[6, 0] = 8;
+            Board_Matrix[7, 0] = 4;
+            Board_Matrix[8, 0] = 5;
+            Board_Matrix[9, 0] = 3;
+            Board_Matrix[10, 0] = 2;
+            Board_Matrix[0, 1] = 1;
+            Board_Matrix[1, 1] = 1;
+            Board_Matrix[2, 1] = 1;
+            Board_Matrix[3, 1] = 1;
+            Board_Matrix[4, 1] = 9;
+            Board_Matrix[5, 1] = 10;
+            Board_Matrix[6, 1] = 9;
+            Board_Matrix[7, 1] = 1;
+            Board_Matrix[8, 1] = 1;
+            Board_Matrix[9, 1] = 1;
+            Board_Matrix[10, 1] = 1;
+            Board_Matrix[4, 2] = 1;
+            Board_Matrix[5, 2] = 11;
+            Board_Matrix[6, 2] = 1;
+            Board_Matrix[5, 3] = 1;
             /* ...........................*/
 
             /* White pieces */
@@ -168,10 +182,16 @@ namespace Proiect_AI
         public void update_element(int old_x, int old_y, int new_x, int new_y)
         {
             /* Update new position of chess piece */
-            Board_Matrix[new_x, new_y] = Board_Matrix[old_x, old_y];
+            
+            
             piece_matrix[new_x, new_y] = piece_matrix[old_x, old_y];
             piece_matrix[new_x, new_y].color = piece_matrix[old_x, old_y].color;
-            
+
+            if (Board_Matrix[old_x, old_y] == 11 && Board_Matrix[new_x,new_y] != 0)
+            {
+                piece_matrix[new_x, new_y].behavior = Board_Matrix[new_x, new_y];
+            }
+            Board_Matrix[new_x, new_y] = Board_Matrix[old_x, old_y];
             /* Set new coordonates */
             piece_matrix[new_x, new_y].Change_position(new_y, new_x);
 
