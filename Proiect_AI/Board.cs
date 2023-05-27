@@ -15,8 +15,12 @@ namespace Proiect_AI
         /* Not sure yet what is the purpose or if will remain */
         public Piece[,] piece_matrix;
 
+        public Piece AI_move;
+
         /* Class constructor */
         public Board() {
+
+            AI_move =new Sword(12,12,true);
             /* Initialize members */
             Board_Matrix = new int[11, 11];
             piece_matrix = new Piece[11, 11];
@@ -166,7 +170,7 @@ namespace Proiect_AI
             /* Update new position of chess piece */
             Board_Matrix[new_x, new_y] = Board_Matrix[old_x, old_y];
             piece_matrix[new_x, new_y] = piece_matrix[old_x, old_y];
-
+            piece_matrix[new_x, new_y].color = piece_matrix[old_x, old_y].color;
             
             /* Set new coordonates */
             piece_matrix[new_x, new_y].Change_position(new_y, new_x);
@@ -176,10 +180,203 @@ namespace Proiect_AI
 
         }
 
+
         public int[,] get_matrixPtr()
         {
             return Board_Matrix;
         }
 
+        public int start_minmax(int depth)
+        { 
+            /* Make a copy of the board */
+            int[,] matrix_copy =new int[11,11];
+            copy_matrix(matrix_copy,Board_Matrix);
+
+            /* Make a copy of the pieces on the board */
+            Piece[,] pieces_copy = new Piece[11,11];
+            copy_pieces(pieces_copy,piece_matrix);
+
+            minmax(matrix_copy,pieces_copy,false,depth);
+
+            return 0;
+        }
+
+        public Piece[] generate_move(int[,]matrix,Piece[,]piece, bool player_color)
+        { 
+            Piece[] moveble_piece = new Piece[30];
+            int index=0;
+
+            for (int i=0;i<11;i++)
+                for(int j=0;j<11;j++)
+                { 
+                    if(matrix[i,j]!=0 && piece[i,j].get_color()==player_color )
+                    {
+                        int nr = piece[i, j].validare_mutare(matrix) -1;
+                        if ( nr!= 0)
+                        {
+                            int elements = 0;
+                            bool one_move_valid = false;
+                            for (int k = 0; i < nr; i++)
+                            {
+                                
+                                int row = piece[i, j].get_movement_x(k);
+                                int column = piece[i, j].get_movement_y(k);
+                                Console.WriteLine(i.ToString() + " " + j.ToString());
+                                if (matrix[row, column] != 0)
+                                {
+                                    Console.WriteLine(row.ToString() + " " + column.ToString()+"*");
+                                    if (piece[row, column].get_color() != player_color)
+                                    {
+                                        Console.WriteLine(i.ToString() + " " + j.ToString());
+                                        moveble_piece[index] = piece[i, j];
+                                        moveble_piece[index].nr_moves = elements;
+                                        moveble_piece[index].valid_movement[elements].Set_X(row);
+                                        moveble_piece[index].valid_movement[elements].Set_Y(column);
+                                        moveble_piece[index].nr_moves = elements;
+                                        elements++;
+                                        one_move_valid = true;
+                                    }
+                                }
+                                else {
+                                    Console.WriteLine(i.ToString() + " " + j.ToString());
+                                    moveble_piece[index] = piece[i, j];
+                                    moveble_piece[index].nr_moves = elements;
+                                    moveble_piece[index].valid_movement[elements].Set_X(row);
+                                    moveble_piece[index].valid_movement[elements].Set_Y(column);
+                                    moveble_piece[index].nr_moves = elements;
+                                    elements++;
+                                    one_move_valid = true;
+
+                                }
+                              
+                            }
+                            if (one_move_valid == true)
+                            { index++; }
+
+                        }
+                    }
+                }
+
+            return moveble_piece;
+        }
+        public double evaluet_move(int[,]matrix,Piece[,]piece)
+        { 
+            double result=0;
+            for (int i=0;i<11;i++)
+                for(int j=0;j<11;j++)
+                { 
+                    if(matrix[i,j]!=0)
+                    { 
+                        if(piece[i,j].get_color()==true)
+                        { 
+                            result+=piece[i,j].get_score(); 
+                        }
+                        else
+                        { 
+                            result-=piece[i,j].get_score(); 
+                        }
+                    }
+                }
+            return result;
+        }
+        public double minmax(int[,]matrix,Piece[,]piece,bool maximizing,int depth)
+        { 
+            double value;
+          
+            if(depth==0)
+            { 
+                double result = evaluet_move(matrix,piece);
+                return result;
+            }
+            Piece[] moves = new Piece[30];
+
+             moves=generate_move(matrix,piece,maximizing);
+            Console.WriteLine(moves.Length);
+            if (maximizing==false)
+            {
+                Console.WriteLine("negru");
+                value =double.MaxValue;
+                int ceva =1;
+                foreach (Piece move in moves)
+                { 
+                    Console.WriteLine(move.get_moves_nr().ToString()+ " " +move.row.ToString() +" "+ move.column.ToString());
+                    ceva++;
+                    for (int move_nr=0;move_nr<move.get_moves_nr();move_nr++)
+                    {
+                        Console.WriteLine("ddd");
+                        /* Make copies for new call */
+                        int[,] new_matrix=new int[11,11];
+                        copy_matrix(new_matrix,matrix);
+
+                        Piece[,] new_pieces = new Piece[11,11];
+                        copy_pieces(new_pieces,piece);
+
+                        /* Update matrixes for movement */
+                        new_matrix[move.get_movement_x(move_nr),move.get_movement_y(move_nr)]=new_matrix[move.row,move.column];
+                        new_matrix[move.row,move.column] = 0;
+                        new_pieces[move.get_movement_x(move_nr),move.get_movement_y(move_nr)]=new_pieces[move.row,move.column];
+                        new_pieces[move.get_movement_x(move_nr),move.get_movement_y(move_nr)].Change_position(move.get_movement_x(move_nr),move.get_movement_y(move_nr));
+
+
+                        double minmaxResult = minmax(new_matrix,new_pieces,true,depth-1);
+                        if(minmaxResult<value)
+                        {  value=minmaxResult;
+                           AI_move=move;
+                           AI_move.valid_movement[0].Set_X(move.get_movement_x(move_nr));
+                           AI_move.valid_movement[0].Set_Y(move.get_movement_y(move_nr));
+                        }
+                       
+                    }
+                }        
+            }
+            else
+            {
+                Console.WriteLine("alb");
+                value =double.MinValue;
+                 foreach(Piece move in moves)
+                { 
+                    for(int move_nr=0;move_nr<move.get_moves_nr();move_nr++)
+                    { 
+                        /* Make copies for new call */
+                        int[,] new_matrix=new int[11,11];
+                        copy_matrix(new_matrix,matrix);
+
+                        Piece[,] new_pieces = new Piece[11,11];
+                        copy_pieces(new_pieces,piece);
+
+                        /* Update matrixes for movement */
+                        new_matrix[move.get_movement_x(move_nr),move.get_movement_y(move_nr)]=new_matrix[move.row,move.column];
+                        new_matrix[move.row,move.column] = 0;
+                        new_pieces[move.get_movement_x(move_nr),move.get_movement_y(move_nr)]=new_pieces[move.row,move.column];
+                        new_pieces[move.get_movement_x(move_nr),move.get_movement_y(move_nr)].Change_position(move.get_movement_x(move_nr),move.get_movement_y(move_nr));
+
+
+                        double minmaxResult = minmax(new_matrix,new_pieces,false,depth-1);
+                        if(minmaxResult>value)
+                        {  value=minmaxResult;
+                           AI_move=move;
+                           AI_move.valid_movement[0].Set_X(move.get_movement_x(move_nr));
+                           AI_move.valid_movement[0].Set_Y(move.get_movement_y(move_nr));
+                        }
+                       
+                    }
+                }        
+            }
+             return value;
+        }
+
+
+        public void copy_matrix(int[,] copy,int[,]matrix)
+        { 
+            for (int i=0;i<11;i++)
+                for(int j=0;j<11;j++)
+                    copy[i,j]=matrix[i,j];
+        }
+        public void copy_pieces(Piece[,] copy,Piece[,]matrix)
+        { 
+            for (int i=0;i<11;i++)
+                for(int j=0;j<11;j++)
+                    copy[i,j]=matrix[i,j];
+        }
     }
 }
